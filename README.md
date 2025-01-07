@@ -16,7 +16,7 @@ note: replace the location where python is installed, the location of the python
 
 Thes commands should be ran on the folder that contains the python progam and docker files to ensure everything runs smoothly
 note : to install docker please refer to https://docs.docker.com/engine/install/ubuntu/
-also ensure that python is installed on the system
+also ensure that python is installed on the system https://www.python.org/downloads/
 ------------------------------------------------------
 
 note : to install docker please refer to https://docs.docker.com/engine/install/ubuntu/
