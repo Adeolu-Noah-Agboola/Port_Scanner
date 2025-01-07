@@ -1,0 +1,34 @@
+sample text for testing purposes__________________________________________________
+Current date and time:  2025-01-04 20:18:58.752427
+Welcome to Port Scan!!!
+Your IP is :192.168.18.12
+Scanning the Target IP -> 192.168.18.12
+__________________________________________________
+
+
+[*] Port 5000 is open
+[*] Port 39872 is open
+[*] Port 51748 is open
+Scan Completed in 0.78 seconds
+__________________________________________________
+Current date and time:  2025-01-04 20:25:01.202697
+Welcome to Port Scan!!!
+Your IP is :192.168.18.12
+Scanning the Target IP -> 192.168.18.12
+__________________________________________________
+
+
+[*] Port 34538 is open
+[*] Port 34898 is open
+[*] Port 40706 is open
+[*] Port 55466 is open
+Scan Completed in 0.78 seconds
+__________________________________________________
+Current date and time:  2025-01-06 18:52:01.832475
+Welcome to Port Scan!!!
+Your IP is :192.168.18.12
+Scanning the Target IP -> 192.168.18.12
+__________________________________________________
+
+
+Scan Completed in 0.44 seconds
