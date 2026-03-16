@@ -1,35 +1,49 @@
-# Port_Scanner
-This is a Python Port Scanner program that utilizes Linux cronjob to automatically scan my IP address for vulnerabilities everyday at 12:30pm.
-The progam also outputs the open ports and logs them in a text file that is uploaded to Docker and displayed using a flask web application.
+# Python TCP Port Scanner
 
+## Overview
 
+This project is a Python-based TCP port scanner designed to identify open ports and running services on remote hosts. The scanner automates network reconnaissance by attempting connections to specified port ranges and logging the results for further analysis.
 
+The tool was developed to strengthen understanding of network services, system exposure, and diagnostic techniques used in infrastructure and security environments.
 
-Cronjob for linux to run everyday at 12:30
--------------------------------------------
-30 12 * * * /usr/bin/python3 /home/king_1up/Documents/port_scan/port_scan.py >>/home/king_1up/Documents/port_Scan_flask/log_file.txt
+Results from scans are automatically logged and can be uploaded to a remote web server for centralized monitoring and analysis.
 
-note: replace the location where python is installed, the location of the python program, and the path to your log file 
+---
 
+## Features
 
+- TCP port scanning of remote hosts
+- Automated detection of open ports
+- Structured scan result logging
+- Upload of log files to a web server
+- Configurable target host and port range
+- Lightweight and easy to run
 
+---
 
-Thes commands should be ran on the folder that contains the python progam and docker files to ensure everything runs smoothly
-note : to install docker please refer to https://docs.docker.com/engine/install/ubuntu/
-also ensure that python is installed on the system https://www.python.org/downloads/
-------------------------------------------------------
+## Technologies Used
 
-note : to install docker please refer to https://docs.docker.com/engine/install/ubuntu/
+- Python 3
+- Socket Programming
+- Network Diagnostics
+- File Logging
+- Basic Web Server Integration
 
-1. to confirm docker is running correctly enter: docker --version
+---
 
-2. docker build -t myflaskapp .
+## How It Works
 
-3. to confirm tha the image has been successfully ran:
-docker images 
+The scanner works by attempting TCP socket connections to a target host across a range of ports.
 
-4. docker run -p 5000:5000 myflaskapp
+For each port:
 
+1. A TCP connection attempt is made
+2. If the connection succeeds, the port is recorded as open
+3. Results are written to a log file
+4. The log file can optionally be uploaded to a remote web server
 
+This approach simulates basic network reconnaissance techniques used in system diagnostics and security assessments.
 
+---
 
+## Example Output
