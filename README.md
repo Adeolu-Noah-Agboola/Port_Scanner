@@ -1,138 +1,125 @@
-# Python TCP Port Scanner
+# Network Scan REST API
 
 ## Overview
 
-This project is a Python-based TCP port scanner designed to identify open ports and running services on remote hosts. The scanner automates network reconnaissance by attempting connections to a specified range of ports and logging the results for later analysis.
+This project is a Python-based network scanning tool built using FastAPI. It extends a traditional TCP port scanner into a REST API, allowing users to perform network scans through structured JSON requests and receive results in a standardized format.
 
-The project was developed to strengthen understanding of network services, system exposure, and diagnostic techniques commonly used in infrastructure administration and security environments.
+The application demonstrates how security and network diagnostic tools can be exposed as backend services. It combines socket-level network scanning with modern API design, making it suitable for integration into automation pipelines, monitoring systems, or security platforms.
 
-Scan results are automatically written to a log file, and the log file can be uploaded to a web server for centralized storage and review.
+Originally developed as a TCP port scanner, the project has been enhanced to support API-based interaction, improving usability, scalability, and real-world applicability.
 
 ---
 
 ## Features
 
-- TCP port scanning of remote hosts
+- TCP port scanning of remote hosts using Python sockets
+- REST API built with FastAPI
+- JSON-based request and response handling
 - Identification of open network services
-- Automated logging of scan results
-- Upload of scan logs to a web server
-- Configurable target host and port range
-- Lightweight and easy to run
+- Modular architecture separating API and scanning logic
+- Interactive API testing via Swagger UI (`/docs`)
+- Designed for security diagnostics and automation workflows
 
 ---
 
 ## Technologies Used
 
 - Python 3
+- FastAPI
+- Uvicorn (ASGI server)
 - Socket Programming
 - Network Diagnostics
-- File Logging
-- Web Server Integration
 
 ---
 
-## How the Scanner Works
+## How the Application Works
 
-The port scanner uses Python's socket library to attempt TCP connections to a target host across a range of ports.
+The application consists of two main components:
+
+1. **API Layer (`main.py`)**
+   - Receives HTTP requests
+   - Validates JSON input
+   - Calls the scanning logic
+   - Returns structured JSON responses
+
+2. **Scanning Logic (`scanner.py`)**
+   - Uses Python’s socket library to attempt TCP connections
+   - Iterates through a specified port range
+   - Identifies open ports based on successful connections
+   - Returns results to the API layer
+
+### Scan Process
 
 For each port in the specified range:
 
-1. A TCP connection attempt is made
-2. If the connection succeeds, the port is identified as open
-3. Results are recorded in a structured log file
-4. The log file can optionally be uploaded to a web server
-
-This process simulates reconnaissance techniques used in network diagnostics and security testing.
+1. A TCP connection attempt is made  
+2. If the connection succeeds, the port is identified as open  
+3. Results are collected and returned as JSON  
 
 ---
 
-## Example Output
+## API Endpoint
 
-```
-Starting scan on target: 192.168.1.10
+### POST /scan
 
-Port 22  : OPEN
-Port 80  : OPEN
-Port 443 : OPEN
-Port 8080: CLOSED
-```
+Performs a port scan on a specified target.
 
-A log file is generated containing all scan results.
+### Request Body
 
----
-
-## Project Structure
-
-```
-Port_Scanner/
-│
-├── port_scanner.py
-├── scan_log.txt
-└── README.md
-```
-
-- **port_scanner.py** – main Python script used to perform the scan  
-- **scan_log.txt** – generated file containing scan results  
-- **README.md** – project documentation  
-
----
-
-## Installation
-
-Clone the repository:
-
-```
+```json
+{
+  "target": "scanme.nmap.org",
+  "start_port": 20,
+  "end_port": 100
+}
+Response
+{
+  "target": "scanme.nmap.org",
+  "start_port": 20,
+  "end_port": 100,
+  "open_ports": [22, 80],
+  "status": "completed"
+}
+Running the Application
+1. Clone the repository
 git clone https://github.com/Adeolu-Noah-Agboola/Port_Scanner.git
-```
-
-Navigate to the project directory:
-
-```
 cd Port_Scanner
-```
+2. Install dependencies
+pip install fastapi uvicorn
+3. Start the API server
+uvicorn app.main:app --reload
+4. Open in browser
 
-Run the scanner:
+http://127.0.0.1:8000/docs
 
-```
-python port_scanner.py
-```
+Use the interactive interface to test the API.
 
----
-
-## Use Cases
+Project Structure
+PORT_SCANNER/
+│
+├── app/
+│   ├── main.py        # FastAPI application (API layer)
+│   └── scanner.py     # Port scanning logic
+│
+├── port_scan/         # Original scanner implementation
+├── Dockerfile         # Container setup (in progress)
+├── requirements.txt   # Project dependencies
+└── README.md
+Use Cases
 
 This project can be used for:
 
-- Network diagnostics
-- Service discovery
-- Learning socket programming
-- Infrastructure troubleshooting
-- Security testing practice
+Network diagnostics
+Service discovery
+Backend API development practice
+Security tool prototyping
+Automation workflows
+Future Improvements
+Asynchronous or multi-threaded scanning
+Logging and monitoring integration
+API authentication (API keys or JWT)
+Persistent storage of scan results
+Full Docker deployment and cloud hosting
+Disclaimer
 
----
-
-## Future Improvements
-
-Potential enhancements include:
-
-- Multi-threaded scanning for faster performance
-- Service banner grabbing
-- Integration with vulnerability scanners
-- Improved reporting and visualization
-
----
-
-## Educational Context
-
-This project was developed as part of hands-on networking and security coursework. It complements other practical labs involving:
-
-- Linux system administration
-- packet capture and traffic analysis using Wireshark
-- network protocol experimentation
-- security testing within virtualized environments
-
----
-
-## Disclaimer
-
-This tool is intended strictly for educational purposes and authorized security testing. Always ensure you have explicit permission before scanning networks or systems.
+This tool is intended strictly for educational purposes and authorized security testing. Only scan systems you own or have explicit permission to test.
