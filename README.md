@@ -1,5 +1,9 @@
 # Network Scan REST API
 
+A FastAPI-based REST API that performs TCP port scanning and returns structured results for security diagnostics.
+
+---
+
 ## Overview
 
 This project is a Python-based network scanning tool built using FastAPI. It extends a traditional TCP port scanner into a REST API, allowing users to perform network scans through structured JSON requests and receive results in a standardized format.
@@ -17,7 +21,7 @@ Originally developed as a TCP port scanner, the project has been enhanced to sup
 - JSON-based request and response handling
 - Identification of open network services
 - Modular architecture separating API and scanning logic
-- Interactive API testing via Swagger UI (`/docs`)
+- Interactive API testing via Swagger UI (/docs)
 - Designed for security diagnostics and automation workflows
 
 ---
@@ -36,13 +40,13 @@ Originally developed as a TCP port scanner, the project has been enhanced to sup
 
 The application consists of two main components:
 
-1. **API Layer (`main.py`)**
+1. API Layer (main.py)
    - Receives HTTP requests
    - Validates JSON input
    - Calls the scanning logic
    - Returns structured JSON responses
 
-2. **Scanning Logic (`scanner.py`)**
+2. Scanning Logic (scanner.py)
    - Uses Python’s socket library to attempt TCP connections
    - Iterates through a specified port range
    - Identifies open ports based on successful connections
@@ -72,7 +76,9 @@ Performs a port scan on a specified target.
   "start_port": 20,
   "end_port": 100
 }
+
 Response
+
 {
   "target": "scanme.nmap.org",
   "start_port": 20,
@@ -80,21 +86,27 @@ Response
   "open_ports": [22, 80],
   "status": "completed"
 }
+
 Running the Application
 1. Clone the repository
+
 git clone https://github.com/Adeolu-Noah-Agboola/Port_Scanner.git
 cd Port_Scanner
+
+
 2. Install dependencies
 pip install fastapi uvicorn
+
+
 3. Start the API server
 uvicorn app.main:app --reload
+
+
 4. Open in browser
-
 http://127.0.0.1:8000/docs
-
 Use the interactive interface to test the API.
 
-Project Structure
+
 PORT_SCANNER/
 │
 ├── app/
@@ -105,6 +117,8 @@ PORT_SCANNER/
 ├── Dockerfile         # Container setup (in progress)
 ├── requirements.txt   # Project dependencies
 └── README.md
+
+
 Use Cases
 
 This project can be used for:
@@ -114,12 +128,14 @@ Service discovery
 Backend API development practice
 Security tool prototyping
 Automation workflows
+
 Future Improvements
 Asynchronous or multi-threaded scanning
 Logging and monitoring integration
 API authentication (API keys or JWT)
 Persistent storage of scan results
 Full Docker deployment and cloud hosting
-Disclaimer
+
+isclaimer
 
 This tool is intended strictly for educational purposes and authorized security testing. Only scan systems you own or have explicit permission to test.
