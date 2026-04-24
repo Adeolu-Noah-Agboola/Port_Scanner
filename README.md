@@ -76,9 +76,11 @@ Performs a port scan on a specified target.
   "start_port": 20,
   "end_port": 100
 }
+```
 
-Response
+### Response
 
+```json
 {
   "target": "scanme.nmap.org",
   "start_port": 20,
@@ -86,27 +88,42 @@ Response
   "open_ports": [22, 80],
   "status": "completed"
 }
+```
 
-Running the Application
-1. Clone the repository
+---
 
+## Running the Application
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/Adeolu-Noah-Agboola/Port_Scanner.git
 cd Port_Scanner
+```
 
+### 2. Install dependencies
 
-2. Install dependencies
+```bash
 pip install fastapi uvicorn
+```
 
+### 3. Start the API server
 
-3. Start the API server
+```bash
 uvicorn app.main:app --reload
+```
 
+### 4. Open in browser
 
-4. Open in browser
 http://127.0.0.1:8000/docs
+
 Use the interactive interface to test the API.
 
+---
 
+## Project Structure
+
+```
 PORT_SCANNER/
 │
 ├── app/
@@ -117,25 +134,32 @@ PORT_SCANNER/
 ├── Dockerfile         # Container setup (in progress)
 ├── requirements.txt   # Project dependencies
 └── README.md
+```
 
+---
 
-Use Cases
+## Use Cases
 
 This project can be used for:
 
-Network diagnostics
-Service discovery
-Backend API development practice
-Security tool prototyping
-Automation workflows
+- Network diagnostics  
+- Service discovery  
+- Backend API development practice  
+- Security tool prototyping  
+- Automation workflows  
 
-Future Improvements
-Asynchronous or multi-threaded scanning
-Logging and monitoring integration
-API authentication (API keys or JWT)
-Persistent storage of scan results
-Full Docker deployment and cloud hosting
+---
 
-isclaimer
+## Future Improvements
+
+- Asynchronous or multi-threaded scanning  
+- Logging and monitoring integration  
+- API authentication (API keys or JWT)  
+- Persistent storage of scan results  
+- Full Docker deployment and cloud hosting  
+
+---
+
+## Disclaimer
 
 This tool is intended strictly for educational purposes and authorized security testing. Only scan systems you own or have explicit permission to test.
